@@ -1,5 +1,37 @@
 <!-- We include the sidebar as it is shared across two screens. -->
-<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
+<ng-include src="partials/dinner-sidebar.html" ng-controller="DinnerCtrl"></ng-include>
 
 <!-- TODO in Lab 5: Display the dish information including image, Description, 
 Instructions, Ingredients and total cost. -->
+
+<div class="col-sm-4 full-height" id="selected-dish-head">
+	<div id="selected-dish">
+		<h3 id="selectedDishName">{{dish.recipeID}}</h3>
+		<img ng-src="{{dish.ImageURL}}" alt="{{dish.Title}}">
+		<div id="selected-descr"><p>{{dish.Description}}</p></div>
+	</div>
+	<div class="">
+		<a ng-href="#/search" id="back-btn" class="arrow-box" type="button">Back to Select Dish</a>
+	</div>
+	<h3>Preparation</h3>
+	<div id="selected-prep"><pre>{{dish.Instructions}}</pre></div>
+</div>
+<div class="col-sm-5 full-height">
+	<div id="ingredients-table">
+		<h5><b>INGREDIENTS FOR <span id="number-of-guests-2">{{getNumberOfGuests()}}</span> PEOPLE</b></h5>
+		<hr>
+		<div class="row">
+			<div id="listOfIngredients"></div>
+		</div>
+		<hr>
+		<div class="row" id="table-total">
+			<div class="col-sm-7 dinner-col">
+				<button data-dish-id="{{dish.RecipeID}}" id="confirm-dish-btn" class="btn btn-default btn-lg" type="button">Confirm Dish</button>
+			</div><div class="col-sm-2 dinner-col">
+				SEK
+			</div><div id="dish-price" class="col-sm-3 dinner-col">
+				{{+getDishPrice(dish).toFixed(2)}}
+			</div>
+		</div>
+	</div>
+</div>

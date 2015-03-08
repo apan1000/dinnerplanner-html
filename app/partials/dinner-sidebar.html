@@ -1,5 +1,26 @@
-People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
-
+<div id="my-dinner" class="col-sm-3 full-height">
+	<h3>My Dinner</h3>
+	<div>
+		<label for="number-of-guests">People</label>
+		<input type="number" min="1" step="1" name="People" id="number-of-guests" ng-model="numberOfGuests" ng-change="setNumberOfGuests(numberOfGuests)"/>
+	</div>
+	<div id="menu-head" class="row th">
+		<div class="col-sm-3 dinner-col">
+			Dish
+		</div>
+		<div class="col-sm-6 dinner-col">
+			Name
+		</div>
+		<div class="col-sm-3 dinner-col">
+			Cost
+		</div>
+	</div>
+	<div id="menu">
+		<div id="menu-starter"></div>
+		<div id="menu-main"></div>
+		<div id="menu-dessert"></div>
+	</div>
+</div>
 <!-- TODO in Lab 5: Display the items on the menu with cost for each -->
 
 

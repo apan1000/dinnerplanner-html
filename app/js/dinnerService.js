@@ -18,8 +18,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
         'dvxltQK4R4bLekoy63EflsMu6R0q44ze',
         'dvxy2iVl2OIUF0Hx3rKp1t0t3GfA6v9Q'];
   this.key = keys[2];
-  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:4,api_key:this.key});
-  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:this.key}); 
+  this.dishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:4,api_key:this.key});
+  this.dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:this.key}); 
 
 
   //Sets the number of guests to num
@@ -49,7 +49,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   }
 
   //Returns all ingredients for all the dishes on the menu.
-  this.getAllIngredients = function() {
+  this.getAllMenuIngredients = function() {
     var ingredients = [];
     for(key in this.menu) {
       ingredients = ingredients.concat(this.menu[key].Ingredients);
@@ -59,7 +59,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
   //Returns the total price of the menu (all the ingredients multiplied by number of guests).
   this.getTotalMenuPrice = function() {
-    var ingredients = this.getAllIngredients();
+    var ingredients = this.getAllMenuIngredients();
     var totalPrice = 0;
     for(key in ingredients){
       totalPrice += parseFloat(ingredients[key].MetricQuantity) * this.numberOfGuests;
@@ -74,38 +74,22 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     for(key in dish.Ingredients) {
       price += parseFloat(dish.Ingredients[key].MetricQuantity) * this.numberOfGuests;
     }
-    return price;
+    return +price.toFixed(2);
   }
 
   //Adds the passed dish to the menu. If the dish of that type already exists on the menu
   //it is removed from the menu and the new one added.
-  this.addDishToMenu = function(id) {
-    var apiKey = this.key;
-    var url = "http://api.bigoven.com/recipe/"+id+"?api_key="+apiKey;
-    console.log("url: "+url);
-    $.ajax({
-      type: "GET",
-      dataType: 'json',
-      cache: false,
-      context: this, //this == dinnerModel
-      url: url,
-      success: function (data) {
-        console.log(data);
-        var dish = data;
-        for(key in this.menu) {
-          if(this.menu[key].RecipeID != dish.RecipeID) {
-            if(this.menu[key].Category == dish.Category) {
-              this.removeDishFromMenu(this.menu[key].RecipeID);
-            }
-          } else {
-            return;
-          }
+  this.addDishToMenu = function(dish) {
+    for(key in this.menu) {
+      if(this.menu[key].RecipeID != dish.RecipeID) {
+        if(this.menu[key].Category == dish.Category) {
+          this.removeDishFromMenu(this.menu[key].RecipeID);
         }
-        this.menu.push(data);
-      },
-      error: function(jqXHR,textStatus,errorThrown) {
+      } else {
+        return;
       }
-    }); 
+    }
+    this.menu.push(dish);
   }
 
   //Removes dish from menu

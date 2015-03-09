@@ -16,9 +16,27 @@
 		</div>
 	</div>
 	<div id="menu">
-		<div id="menu-starter"></div>
-		<div id="menu-main"></div>
-		<div id="menu-dessert"></div>
+		<div class="row menu-item" ng-repeat="dish in getFullMenu()">
+			<span title="Remove" class="remove" ng-click="removeDishFromMenu(dish.RecipeID)">X</span>
+			<div class="col-sm-3 dinner-col">
+				{{dish.RecipeID}}
+			</div>
+			<div class="col-sm-6 dinner-col">
+				{{dish.Title}}
+			</div>
+			<div class="col-sm-3 dinner-col">
+				{{getDishPrice(dish).toFixed(2)}}
+			</div>
+		</div>
+		<!--div ng-if="dish.Category == 'Appetizers'">
+			<div id="menu-starter">{{getSelectedDish("Appetizers")}}</div>
+		</div>
+		<div ng-if="dish.Category == 'Main Dish'">
+			<div id="menu-main">{{getSelectedDish("Main Dish")}}</div>
+		</div>
+		<div ng-if="dish.Category == 'Desserts'">
+			<div id="menu-dessert">{{getSelectedDish("Desserts")}}</div>
+		</div-->
 	</div>
 </div>
 <!-- TODO in Lab 5: Display the items on the menu with cost for each -->

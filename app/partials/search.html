@@ -13,7 +13,7 @@ not support it in free version) and list all the dishes that match the search. -
 	</div>
 	<div id="dishes">
 		<div id="search-status">{{status}}</div>
-		<div ng-repeat="dish in dishes" class="dish" data-dish-id="{{dish.RecipeID}}">
+		<div ng-repeat="dish in dishes" class="dish">
 			<a ng-href="#/dish/{{dish.RecipeID}}" class="dish-head">
 				<img ng-src="{{dish.ImageURL120}}" alt="dish.Title">
 				<span class="dish-name">{{dish.Title}}</span>

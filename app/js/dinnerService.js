@@ -13,7 +13,98 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   */
 
   this.numberOfGuests = 3;
-  this.menu = [];
+  this.menu = [{
+  "RecipeID": 196149,
+  "Title": "Lasagna",
+  "Description": "Quick and Easy. Especially since you don't have to cook the noodles first",
+  "Cuisine": "Italian",
+  "Category": "Main Dish",
+  "Subcategory": "Main Dish - Other",
+  "PrimaryIngredient": "Cheese",
+  "StarRating": 4.33333333333333,
+  "WebURL": "http://www.bigoven.com/recipe/lasagna/196149",
+  "ImageURL": "http://redirect.bigoven.com/pics/rs/640/lasagna-5.jpg",
+  "ReviewCount": 6,
+  "MedalCount": 0,
+  "FavoriteCount": 428,
+  "Poster":  0,
+  "Ingredients":  [
+     {
+      "IngredientID": 2010254,
+      "DisplayIndex": 0,
+      "IsHeading": false,
+      "Name": "chopmeat",
+      "HTMLName": "chopmeat",
+      "Quantity": 1.5,
+      "DisplayQuantity": "1 1/2",
+      "Unit": "lbs",
+      "MetricQuantity": 0.680388555,
+      "MetricDisplayQuantity": "0.68",
+      "MetricUnit": "kg",
+      "PreparationNotes": null,
+      "IngredientInfo":  {
+        "Name": "chopmeat",
+        "Department": "Meats"
+      },
+      "IsLinked": true
+    },
+     {
+      "IngredientID": 2010255,
+      "DisplayIndex": 1,
+      "IsHeading": false,
+      "Name": "no cook Lasagna noodles",
+      "HTMLName": "no cook <a href=",
+      "Quantity": 1,
+      "DisplayQuantity": "1",
+      "Unit": "package",
+      "MetricQuantity": 1,
+      "MetricDisplayQuantity": "1",
+      "MetricUnit": "package",
+      "PreparationNotes": null,
+      "IngredientInfo":  {
+        "Name": "no cook Lasagna noodles",
+        "Department": "Pasta"
+      },
+      "IsLinked": false
+    }
+  ],
+  "Instructions": "Brown the chopmeat and then make Mom's Spaghetti sauce in same pot w/ meat\r\n\r\nMix ricotta, eggs, salt and pepper, italian seasoning and parmesan cheese\r\n\r\nStart layering w/ sauce, then w/ noodles, ricotta and end w/ spaghetti sauce. Top w/ shredded mozzarella cheese, and then sprinkle some more w/ parmesan cheese.\r\n\r\nYou can add some mozzarella within your layers as well\r\n\r\nBake @ 350 for 45 min to 1 hour. Let slightly cool before serving",
+  "YieldNumber": 8,
+  "YieldUnit": "Servings",
+  "TotalMinutes": 0,
+  "ActiveMinutes": 0,
+  "NutritionInfo":  0,
+  "IsPrivate": false,
+  "CreationDate": "/Date(1302789720000)/",
+  "LastModified": "/Date(1413447844417)/",
+  "IsBookmark": false,
+  "BookmarkURL": null,
+  "BookmarkSiteLogo": "",
+  "BookmarkImageURL": null,
+  "IsRecipeScan": null,
+  "MenuCount": 4,
+  "NotesCount": 0,
+  "AdTags": "simplypotatoes15",
+  "IngredientsTextBlock": null,
+  "AllCategoriesText": "",
+  "IsSponsored": false,
+  "VariantOfRecipeID": null,
+  "Collection": null,
+  "AdminBoost": 200,
+  "VerifiedDateTime": "/Date(1344130070887)/",
+  "MaxImageSquare": 256,
+  "ImageSquares":  [
+    256,
+    200,
+    128,
+    120,
+    64,
+    48,
+    36
+  ],
+  "HeroPhotoUrl": "http://images.bigoven.com/image/upload/lasagna-5.jpg",
+  "VerifiedByClass": "helper"
+}];
   var keys = ['dvxveCJB1QugC806d29k1cE6x23Nt64O',
         'dvxltQK4R4bLekoy63EflsMu6R0q44ze',
         'dvxy2iVl2OIUF0Hx3rKp1t0t3GfA6v9Q'];

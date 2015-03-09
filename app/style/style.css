@@ -262,7 +262,7 @@ pre {
 }
 
 #dishes {
-	max-height: 710px;
+	max-height: 88%;
 	padding: 20px;
 	overflow-y: scroll;
 }
@@ -349,7 +349,12 @@ pre {
 
 #listOfIngredients {
 	/*padding-left: 40px;*/
-	margin-left: 45px;
+	margin-left: 30px;
+}
+
+.ingredient-info {
+	padding-left: 8px;
+	padding-right: 0px;
 }
 
 #table-total {
@@ -363,10 +368,15 @@ pre {
 }
 
 #selected-dish {
-	padding-left: 10px;
+	max-height: 100%;
+	overflow-y: scroll;
 }
 
-#selected-dish img {
+#selected-dish-head {
+
+}
+
+#selected-dish-head img {
 	max-width: 100%;
 }
 
@@ -440,7 +450,8 @@ pre {
 #dish-image {
 	margin-top: 30px;
 	margin-left: 20px;
-	width: 160px;
+	width: 260px;
+	max-width: 100%;
 }
 
 #dish-div {

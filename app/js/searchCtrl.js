@@ -5,6 +5,16 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
   // TODO in Lab 5: you will need to implement a method that searchers for dishes
   // including the case while the search is still running.
 
+  // Get some dishes at start
+	$scope.status = "Getting some dishes...";
+	Dinner.dishSearch.get({title_kw:"starter"},function(data){
+	$scope.dishes = data.Results;
+	$scope.status = "Showing " + data.Results.length + " results";
+	},function(data){
+		$scope.status = "There was an error";
+	});
+
+	//Searches for dishes matching the query
 	$scope.search = function(query) {
 		$scope.status = "Searching...";
 		Dinner.dishSearch.get({title_kw:query},function(data){
@@ -15,7 +25,7 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
 		});
 	}
 
-	$scope.checkSearch = function(dishes) {
+	/*$scope.checkSearch = function(dishes) {
 		if (typeof dishes == "undefined") {
 			console.log("hej");
 			$scope.status = "Getting dishes...";
@@ -26,5 +36,5 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
 				$scope.status = "There was an error";
 			});
 		}
-	}
+	}*/
 });

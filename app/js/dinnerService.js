@@ -3,7 +3,7 @@
 // dependency on any service you need. Angular will insure that the
 // service is created first time it is needed and then just reuse it
 // the next time.
-dinnerPlannerApp.factory('Dinner',function ($resource) {
+dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
   
   /*
   Keys:
@@ -12,7 +12,14 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   Ellinor: dvxy2iVl2OIUF0Hx3rKp1t0t3GfA6v9Q
   */
 
-  this.numberOfGuests = 3;
+  /*this.numberOfGuests = 3;
+  $cookieStore.put('numberOfGuests',this.numberOfGuests);*/
+  this.numberOfGuests = $cookieStore.get('numberOfGuests');
+  console.log(this.numberOfGuests);
+  if (typeof this.numberOfGuests == 'undefined') {
+    this.numberOfGuests = 3;
+  }
+
   this.menu = [{
   "RecipeID": 196149,
   "Title": "Lasagna",
@@ -117,11 +124,13 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   this.setNumberOfGuests = function(num) {
     if(num > 0) {
       this.numberOfGuests = num;
+      $cookieStore.put('numberOfGuests',this.numberOfGuests);
     }
   }
 
   //Returns number of guests
   this.getNumberOfGuests = function() {
+    this.numberOfGuests = $cookieStore.get('numberOfGuests');
     return parseInt(this.numberOfGuests);
   }
 

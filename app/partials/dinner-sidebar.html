@@ -50,10 +50,9 @@
 	</div>
 	<hr>
 	<div class="right-aligned">
-		SEK <span id="total-cost">
-			</span>
+		SEK {{getTotalMenuPrice().toFixed(2)}}
 	</div>
-	<a ng-href="#/home" id="confirm-dinner-btn" class="btn btn-default btn-lg" type="button" disabled>Confirm dinner</a>
+	<a ng-href="#/overview" ng-disabled="getTotalMenuPrice() == ''" id="confirm-dinner-btn" class="btn btn-default btn-lg" type="button">Confirm dinner</a>
 </div>
 <!-- TODO in Lab 5: Display the items on the menu with cost for each -->
 

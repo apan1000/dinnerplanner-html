@@ -38,6 +38,22 @@
 			<div id="menu-dessert">{{getSelectedDish("Desserts")}}</div>
 		</div-->
 	</div>
+	<div id="pending" class="row">
+		<div class="col-sm-3 dinner-col">
+		</div>
+		<div class="col-sm-6 dinner-col">
+			Pending
+		</div>
+		<div class="col-sm-3 dinner-col">
+			<span id="pending-dish">0.00</span>
+		</div>
+	</div>
+	<hr>
+	<div class="right-aligned">
+		SEK <span id="total-cost">
+			</span>
+	</div>
+	<a ng-href="#/home" id="confirm-dinner-btn" class="btn btn-default btn-lg" type="button" disabled>Confirm dinner</a>
 </div>
 <!-- TODO in Lab 5: Display the items on the menu with cost for each -->
 

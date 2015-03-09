@@ -21,21 +21,19 @@ Instructions, Ingredients and total cost. -->
 	<div id="ingredients-table">
 		<h5><b>INGREDIENTS FOR <span id="number-of-guests-2">{{getNumberOfGuests()}}</span> PEOPLE</b></h5>
 		<hr>
-		<div class="row">
-			<div id="listOfIngredients">
-				<div ng-repeat="ingredient in dish.Ingredients" class="row">
-					<div class="col-sm-2 dinner-col">
-						{{(ingredient.MetricQuantity*getNumberOfGuests()).toFixed(2)}} {{ingredient.MetricUnit}}
-					</div>
-					<div class="col-sm-5 dinner-col">
-						{{ingredient.Name}}
-					</div>
-					<div class="col-sm-2 dinner-col">
-						SEK
-					</div>
-					<div class="col-sm-3 dinner-col">
-						{{(ingredient.MetricQuantity*getNumberOfGuests()).toFixed(2)}}
-					</div>
+		<div id="listOfIngredients">
+			<div ng-repeat="ingredient in dish.Ingredients" class="row">
+				<div class="col-sm-2 dinner-col">
+					{{(ingredient.MetricQuantity*getNumberOfGuests()).toFixed(2)}} {{ingredient.MetricUnit}}
+				</div>
+				<div class="col-sm-5 dinner-col">
+					{{ingredient.Name}}
+				</div>
+				<div class="col-sm-2 dinner-col">
+					SEK
+				</div>
+				<div class="col-sm-3 dinner-col">
+					{{(ingredient.MetricQuantity*getNumberOfGuests()).toFixed(2)}}
 				</div>
 			</div>
 		</div>

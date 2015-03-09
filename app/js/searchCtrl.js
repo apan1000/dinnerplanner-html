@@ -15,4 +15,16 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
 		});
 	}
 
+	$scope.checkSearch = function(dishes) {
+		if (typeof dishes == "undefined") {
+			console.log("hej");
+			$scope.status = "Getting dishes...";
+			Dinner.dishSearch.get({title_kw:"starter"},function(data){
+			$scope.dishes = data.Results;
+			$scope.status = "Showing " + data.Results.length + " results";
+			},function(data){
+				$scope.status = "There was an error";
+			});
+		}
+	}
 });

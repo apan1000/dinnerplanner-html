@@ -24,7 +24,7 @@ Instructions, Ingredients and total cost. -->
 			<div id="listOfIngredients">
 				<div ng-repeat="ingredient in dish.Ingredients" class="row">
 					<div class="col-sm-2 ingredient-info">
-						{{(ingredient.MetricQuantity*getNumberOfGuests())}} {{ingredient.MetricUnit}}
+						{{getIngredientPrice(ingredient)}} {{ingredient.MetricUnit}}
 					</div>
 					<div class="col-sm-5 ingredient-info">
 						{{ingredient.Name}}
@@ -33,7 +33,7 @@ Instructions, Ingredients and total cost. -->
 						SEK
 					</div>
 					<div class="col-sm-3 ingredient-info">
-						{{(ingredient.MetricQuantity*getNumberOfGuests())}}
+						{{getIngredientAmount(ingredient)}}
 					</div>
 				</div>
 			</div>

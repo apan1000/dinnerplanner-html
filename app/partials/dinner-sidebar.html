@@ -30,36 +30,22 @@
 				</div>
 			</a>
 		</div>
-		<!--a class="row menu-item" ng-repeat="dish in getFullMenu()" ng-href="http://localhost:8000/#/dish/{{dish.RecipeID}}">
-			<span title="Remove" class="remove" ng-click="removeDishFromMenu(dish.RecipeID)">X</span>
-			<div class="col-sm-3 dinner-col">
-				{{dish.RecipeID}}
-			</div>
-			<div class="col-sm-6 dinner-col">
-				{{dish.Title}}
-			</div>
-			<div class="col-sm-3 dinner-col">
-				{{getDishPrice(dish)}}
-			</div>
-		</a-->
-		<!--div ng-if="dish.Category == 'Appetizers'">
-			<div id="menu-starter">{{getSelectedDish("Appetizers")}}</div>
-		</div>
-		<div ng-if="dish.Category == 'Main Dish'">
-			<div id="menu-main">{{getSelectedDish("Main Dish")}}</div>
-		</div>
-		<div ng-if="dish.Category == 'Desserts'">
-			<div id="menu-dessert">{{getSelectedDish("Desserts")}}</div>
-		</div-->
 	</div>
-	<div id="pending" class="row">
+	<div id="pending" class="row" ng-controller="DishCtrl">
 		<div class="col-sm-3 dinner-col">
 		</div>
 		<div class="col-sm-6 dinner-col">
 			Pending
 		</div>
 		<div class="col-sm-3 dinner-col">
-			<span id="pending-dish">0.00</span>
+			<span id="pending-dish">
+				<span ng-if="dish">
+					{{getDishPrice(dish)}}
+				</span>
+				<span ng-if="dish == null">
+					0
+				</span>
+			</span>
 		</div>
 	</div>
 	<hr>

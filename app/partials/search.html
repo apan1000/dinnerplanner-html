@@ -7,7 +7,7 @@ not support it in free version) and list all the dishes that match the search. -
 	<div id="select-dish-head">
 		<h3>SELECT DISH</h3>
 		<hr>
-		<input ng-model="query" id="search-bar" type="search" placeholder="Enter key words">
+		<input ng-model="query" ng-keypress="$event.keyCode == 13 && search(query)" id="search-bar" type="search" placeholder="Enter key words">
 		<button ng-click="search(query)" id="search-button">Search</button>
 
 	</div>

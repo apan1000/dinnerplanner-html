@@ -9,7 +9,7 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
 	$scope.status = "Loading dish...";
 	Dinner.dish.get({id:$routeParams.dishId},function(data){
     	$scope.dish = data;
-    	$scope.status = "Showing " + data.Title;
+    	$scope.status = "";
 	},function(data){
      	$scope.status = "There was an error";
    	});

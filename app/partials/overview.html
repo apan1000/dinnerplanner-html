@@ -12,12 +12,12 @@
 			<img id="overview-image" ng-src="{{dish.ImageURL}}" alt="{{dish.Title}}">
 			<span class="dish-name">{{dish.Title}}</span>
 		</div>
-		<div class="dish-cost"><b>{{getDishPrice(dish).toFixed(2)}} SEK</b></div>
+		<div class="dish-cost"><b>{{getDishPrice(dish)}} SEK</b></div>
 	</div>
 
 	<div class="vert-line"></div>
 	<div class="total-price">
-		Total:<span class="price-text"><br>{{getTotalMenuPrice().toFixed(2)}} SEK</span>
+		Total:<span class="price-text"><br>{{getTotalMenuPrice()}} SEK</span>
 	</div>
 
 	<div id="after-dinner">

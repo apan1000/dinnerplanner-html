@@ -11,7 +11,17 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
   FB: dvxltQK4R4bLekoy63EflsMu6R0q44ze
   Ellinor: dvxy2iVl2OIUF0Hx3rKp1t0t3GfA6v9Q
   */
-  
+
+  //BigOven stuff, each key has 100 querys/h
+  var keys = ['dvxveCJB1QugC806d29k1cE6x23Nt64O',
+        'dvxltQK4R4bLekoy63EflsMu6R0q44ze',
+        'dvxy2iVl2OIUF0Hx3rKp1t0t3GfA6v9Q'];
+  this.key = keys[0];
+  this.dishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:30,api_key:this.key});
+  this.dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:this.key});
+
+  //Get number of guests from a cookie or set an initial value and create
+  //the cookie.
   this.numberOfGuests = $cookieStore.get('numberOfGuests');
   console.log('numberOfGuests: '+this.numberOfGuests);
   if (typeof this.numberOfGuests === 'undefined') {
@@ -21,13 +31,19 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
     console.log('numberOfGuests-cookie: '+$cookieStore.get('numberOfGuests'));
   }
 
+  //Get menu from cookie or create new menu and cookie.
   this.menu = [];
-  var keys = ['dvxveCJB1QugC806d29k1cE6x23Nt64O',
-        'dvxltQK4R4bLekoy63EflsMu6R0q44ze',
-        'dvxy2iVl2OIUF0Hx3rKp1t0t3GfA6v9Q'];
-  this.key = keys[2];
-  this.dishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:4,api_key:this.key});
-  this.dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:this.key}); 
+  var tempMenu = []; //Couldn't find how to change context (what 'this' is) for $resource, so used a temporary menu instead
+  var menuIDs = $cookieStore.get('menu');
+  for(key in menuIDs) {
+    this.dish.get({id:menuIDs[key]},function(data){
+      tempMenu.push(data);
+      console.log("Adding "+data.Title+" to menu.");
+    },function(data){
+      console.log("Error getting/adding dish");
+    });
+  }
+  this.menu = tempMenu;
 
 
   //Sets the number of guests to num
@@ -73,7 +89,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
     for(key in ingredients){
       totalPrice += parseFloat(ingredients[key].MetricQuantity) * this.numberOfGuests;
     }
-    return totalPrice;
+    return +totalPrice.toFixed(2);
 
   }
 
@@ -99,6 +115,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
       }
     }
     this.menu.push(dish);
+    this.setMenuCookie();
   }
 
   //Removes dish from menu
@@ -107,6 +124,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
       if(this.menu[key].RecipeID == id){
         var index = this.menu.indexOf(this.menu[key]);
         this.menu.splice(index,1);
+        this.setMenuCookie();
       }
     }
   }
@@ -114,6 +132,15 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
   //Removes all dishes from menu
   this.emptyMenu = function() {
     this.menu = [];
+    this.setMenuCookie();
+  }
+
+  this.setMenuCookie = function() {
+    var menuIDs = [];
+    for(key in this.menu) {
+      menuIDs.push(this.menu[key].RecipeID);
+    }
+    $cookieStore.put('menu',menuIDs);
   }
 
   // TODO in Lab 5: Add your model code from previous labs

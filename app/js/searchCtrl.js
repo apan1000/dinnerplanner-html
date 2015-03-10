@@ -6,12 +6,12 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
   // including the case while the search is still running.
 
   // Get some dishes at start
-	$scope.status = "Getting some dishes...";
-	Dinner.dishSearch.get({title_kw:"starter"},function(data){
+	$scope.status = "Getting some dishes... Feel free to search for something you want.";
+	Dinner.dishSearch.get(function(data){
 	$scope.dishes = data.Results;
 	$scope.status = "Showing " + data.Results.length + " results";
 	},function(data){
-		$scope.status = "There was an error";
+		$scope.status = "There was an error getting the dishes, please try to search for something.";
 	});
 
 	//Searches for dishes matching the query
@@ -21,7 +21,7 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
 			$scope.dishes = data.Results;
 			$scope.status = "Showing " + data.Results.length + " results";
 		},function(data){
-			$scope.status = "There was an error";
+			$scope.status = "There was an error getting your dishes, please try again.";
 		});
 	}
 

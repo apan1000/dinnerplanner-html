@@ -171,6 +171,7 @@ pre {
 }
 
 .menu-item {
+	display: block;
 	margin-left: -5px;
 	margin-right: -5px;
 	margin-top: 10px;
@@ -220,8 +221,16 @@ pre {
     box-shadow:			0px 2px 6px rgba(0, 0, 0, .45);
 }
 
+.menu-link {
+	display: block;
+	height: 100%;
+	overflow: auto;
+	color: #333;
+}
+
 .dinner-col {
 	overflow: auto;
+	height: 100%;
 }
 
 #pending {
@@ -242,7 +251,11 @@ pre {
 	font-size: 16pt;
 }
 
-/* "search"-page layout */ 
+/* "search"-page layout */
+#select-dish {
+	height: 100%;
+} 
+
 #select-dish-head {
 	padding-top: 15px;
 	padding-bottom: 20px;
@@ -255,52 +268,61 @@ pre {
 	margin-top: 0;
 }
 
-#dish-type {
-	margin-left: 40px;
-	width: 150px;
-	height: 25px;
-}
-
 #dishes {
-	max-height: 88%;
+	height: 87%;
 	padding: 20px;
 	overflow-y: scroll;
 }
 
 .dish {
 	float: left;
-	margin: 20px;
+	margin-top: 15px;
+	margin-bottom: 40px;
+	margin-left: 10px;
+	margin-right: 10px;
 	text-align: center;
-	max-width: 200px;
-	height: 280px;
+	width: 200px;
+	height: 240px;
 }
 
 .dish-head {
+	width: 200px;
 	clear: both;
 	display: block;
 	padding: 8px;
 	background: #ddd;
+	transition: 0.2s ease-in-out;
+}
+
+#dishes .dish-head:hover, #dishes .dish-head:focus {
+	color: #000;
+	background: #d58;
+	text-decoration: none;
+	transform: scale(1.1);
+	-ms-transform: scale(1.1); /* IE 9 */
+	-webkit-transform: scale(1.1); /* Safari and Chrome */
+	-o-transform: scale(1.1); /* Opera */
+	-moz-transform: scale(1.1); /* Firefox */
+}
+
+#dishes .dish-head:hover img, #dishes .dish-head:focus img {
+	border-radius: 400px;
 }
 
 .dish-head img {
 	max-width: 120px;
-}
-
-#select-dish .dish-head {
-	cursor: pointer;
+	transition: 0.2s ease-in-out;
 }
 
 .dish-name {
 	display: block;
 	color: #000;
 	font: 20px helvetica, arial, sans-serif;
-	background: #ddd;
 	margin-top: 5px;
 }
 
-.dish-descr {
-	margin-top: 10px;
-	max-height: 80px;
+.dish-category {
+	margin-top: 5px;
 	overflow-y: hidden;
 }
 
@@ -355,6 +377,7 @@ pre {
 .ingredient-info {
 	padding-left: 8px;
 	padding-right: 0px;
+	overflow: auto;
 }
 
 #table-total {
@@ -452,10 +475,6 @@ pre {
 	margin-left: 20px;
 	width: 260px;
 	max-width: 100%;
-}
-
-#dish-div {
-	margin-top: 30px;
 }
 
 .preparation-padding {
